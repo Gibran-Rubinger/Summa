@@ -177,7 +177,7 @@ header
 }
 
 .logo{
-    background-image: url(../logo/summaNav.png);
+    background-image: url(../images/summaNav.png);
     width: 140px;
     height: 70px;
     align-self: bottom;
@@ -189,7 +189,7 @@ header
 	z-index: -1;
 }
 .logo2{
-    background-image: url(../logo/SUMMABLACK-1.png);
+    background-image: url(../images/SUMMABLACK-1.png);
     width: 840px;
     height: 350px;
     scale: 20%;
