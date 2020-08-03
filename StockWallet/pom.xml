@@ -18,8 +18,14 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>2020.0.0-SNAPSHOT</spring-cloud.version>
 	</properties>
-
+	
 	<dependencies>
+	<dependency>
+  <!-- jsoup HTML parser library @ https://jsoup.org/ -->
+  <groupId>org.jsoup</groupId>
+  <artifactId>jsoup</artifactId>
+  <version>1.13.1</version>
+</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>

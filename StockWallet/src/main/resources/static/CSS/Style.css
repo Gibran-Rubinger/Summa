@@ -152,12 +152,12 @@ header
 }
 .fontLogin{
     font-family: "Montserrat", sans-serif;
-    display: center;
+    display: bottom;
     font-weight: 600;
 }
 
 .mainFrontHome {
-
+	font: lulo-clean-w01-one-bold,sans-serif;
 	display: table-cell;
 	text-align: center;
     vertical-align: middle;
