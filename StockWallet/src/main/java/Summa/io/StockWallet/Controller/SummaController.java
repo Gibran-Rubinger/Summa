@@ -16,7 +16,19 @@ import Summa.io.StockWallet.fetchData.Stock;
 @RestController
 public class SummaController {
 
+	 private String stockCd = "";
+	 private String stockNm = "";
+	 private String stockMk = "";
+
+	
+	 private Double stockPr = 0.00;
+
 	 
+
+	 private Double finalStockChange = 0.00;
+
+	
+	 private Double stockCp = 0.00;
 
 	Set<Stock> FTSE100;
 
@@ -32,22 +44,17 @@ public class SummaController {
 	final String url = "https://www.londonstockexchange.com/indices/ftse-100/constituents/table";
 
 	@GetMapping("/fetch")
-	public Stock FetchIseq(Stock stock) {
+	public Set<Stock> FetchIseq(Stock stock) {
 
 		try {
 			final Document result = Jsoup.connect(url).get();
 
 //			System.out.println(result.outerHtml());
 
-			for (Element row : result.select("table.full-width.ftse-index-table-table")) {
-				 String stockCd = "";
-				 String stockNm = "";
-				 String stockMk = "";
-
+			for (Element row : result.select("table.full-width.ftse-index-table-table tr")) {
+				
 				 String textPrice = "";
 				 String transitionPrice = "";
-				 Double stockPr = 0.00;
-
 				 String textChange = "";
 				 String transitionChange = "";
 				 Double stockCh = 0.00;
@@ -55,12 +62,9 @@ public class SummaController {
 				 String textChangeN = "";
 				 String transitionChangeN = "";
 				 Double stockChN = 0.00;
-
-				 Double finalStockChange = 0.00;
-
 				 String textChPer = "";
 				 String transitionChPer = "";
-				 Double stockCp = 0.00;
+				 
 				if (row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link").text()
 						.equals("")) {
 					continue;
@@ -71,42 +75,41 @@ public class SummaController {
 					stockNm = row.select("td.clickable.instrument-name.gtm-trackable.td-with-link").text();
 //					System.out.println(stockNm);
 					stockMk = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
-					System.out.println("este é um numero pro Michael"+stockMk);
+					
+					
+					System.out.println("test A "+stockMk);
 					transitionPrice = row.select("td.instrument-lastprice").text();
+					System.out.println("oiiiii "+transitionPrice);
 					textPrice = transitionPrice.replace(",", "");
+					System.out.println(textPrice);
 					stockPr = Double.parseDouble(textPrice);
-					System.out.println("este é um numero pro Michael"+stockPr);
-					
-					transitionChange = row.select("td.instrument-netchange.hide-on-landscape.positivechange").text();
-					textChange = transitionChange.replace(",", "");
-					stockCh = Double.parseDouble(textChange);
-					System.out.println("este é um numero pro Michael"+stockCh);
-					
-					transitionChangeN = row.select("td.instrument-netchange.hide-on-landscape.negativechange").text();
-					textChangeN = transitionChangeN.replace(",", "");
-					stockChN = Double.parseDouble(textChangeN);
-					System.out.println("este é um numero pro Michael"+stockChN);
-					
+					System.out.println("test B "+stockPr);
+//					
+				
+//					
 					transitionChPer = row.select("td.instrument-percentualchange.hide-on-landscape.gtm-trackable")
 							.text();
+					System.out.println("kkkkk "+transitionChPer);
 					textChPer = transitionChPer.replace(",", "");
-					stockCp = Double.parseDouble(textChPer);
-					System.out.println(stockCp);
+					String a =textChPer.replace("%","");
+					System.out.println("textChPerrgfg "+ a);
+					stockCp = Double.parseDouble(a);
+					System.out.println("ggg"+stockCp);
+					
 				}
-				if (stockCh != 0.00) {
-					finalStockChange = stockCh;
-				} else {
-					finalStockChange = stockChN;
-				}
-				FTSE100.add(new Stock(stockCd, stockNm, stockMk, stockPr, finalStockChange, stockCp));
+				
+				Stock stockTeste = new Stock(stockCd, stockNm, stockMk, stockPr, stockCp);
+				System.out.println("STOCK TESTE: " + stockTeste);
+				FTSE100.add(stockTeste);
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		System.out.println("test E "+stockCp);
 		for (Stock st : FTSE100) {
 			System.out.println(st);
 		}
-		return stock;
+		return FTSE100;
 	}
 
 }

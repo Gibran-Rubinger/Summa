@@ -12,12 +12,11 @@ public class Stock {
 	private Double priceChangePer = 0.00;
 	LocalDateTime dTime = LocalDateTime.now();
 
-	public Stock(String code, String name, String marketCap, Double price, Double priceChange, Double priceChangePer) {
+	public Stock(String code, String name, String marketCap, Double price, Double priceChangePer) {
 		this.code = code;
 		this.name = name;
 		this.marketCap = marketCap;
 		this.price = price;
-		this.priceChange = priceChange;
 		this.priceChangePer = priceChangePer;
 	}
 
@@ -53,14 +52,6 @@ public class Stock {
 		this.price = price;
 	}
 
-	public Double getPriceChange() {
-		return priceChange;
-	}
-
-	public void setPriceChange(Double priceChange) {
-		this.priceChange = priceChange;
-	}
-
 	public Double getPriceChangePer() {
 		return priceChangePer;
 	}
@@ -81,8 +72,7 @@ public class Stock {
 	@Override
 	public String toString() {
 		return "      CODE: " + code + "       STOCK NAME: " + name + "        MARKET CAP:  " + marketCap
-				+ " (m).        PRICE:  £" + price + "         CHANGE: " + priceChange + "       CHANGE %:"
-				+ priceChangePer + "         DATE: " + dTime
+				+ " (m).        PRICE:  £" + price + "       CHANGE %:" + priceChangePer + "         DATE: " + dTime
 				+ "\n\n\n___________________________________________________________________________________________________________________________________________\n";
 	}
 }
