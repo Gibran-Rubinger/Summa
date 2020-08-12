@@ -8,7 +8,6 @@ public class Stock {
 	private String name = "";
 	private String marketCap = "";
 	private Double price = 0.00;
-	private Double priceChange = 0.00;
 	private Double priceChangePer = 0.00;
 	LocalDateTime dTime = LocalDateTime.now();
 
@@ -73,6 +72,6 @@ public class Stock {
 	public String toString() {
 		return "      CODE: " + code + "       STOCK NAME: " + name + "        MARKET CAP:  " + marketCap
 				+ " (m).        PRICE:  £" + price + "       CHANGE %:" + priceChangePer + "         DATE: " + dTime
-				+ "\n\n\n___________________________________________________________________________________________________________________________________________\n";
+				+ "\n\n\n___________________________________________________________________________________________________________________________________________________________________________\n";
 	}
 }
