@@ -11,6 +11,9 @@
 //import javax.persistence.Table;
 //import javax.persistence.Transient;
 //
+//
+//import org.springframework.context.support.BeanDefinitionDsl.Role;
+//
 //@Entity
 //@Table(name="user")
 //public class User {
@@ -36,7 +39,7 @@
 //	}
 //	
 //	@ManyToMany
-//    private Collection<Role> roles;
+//  private Collection<Role> roles;
 //	public Long getId() {
 //		return id;
 //	}
@@ -79,8 +82,5 @@
 //
 //    public void setRoles(Set<Role> roles) {
 //        this.roles = roles;
-//    }
-//	
-//	
-//	
+//    }	
 //}

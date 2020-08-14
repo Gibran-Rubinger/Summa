@@ -7,6 +7,9 @@
 //import javax.persistence.Id;
 //import javax.persistence.ManyToMany;
 //
+//import org.springframework.boot.autoconfigure.domain.EntityScan;
+//
+//@EntityScan(basePackages = {"Summa.io.StockWallet.Entity"})
 //public class Role {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)

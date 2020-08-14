@@ -1,16 +1,30 @@
 package Summa.io.StockWallet.Controller;
 
 import java.util.HashSet;
+//import java.util.List;
 import java.util.Set;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.springframework.stereotype.Controller;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.web.bind.annotation.DeleteMapping;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.PutMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.PutMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+//import Summa.io.StockWallet.Entity.User;
+//import Summa.io.StockWallet.Service.UserService;
 import Summa.io.StockWallet.fetchData.Stock;
 
 @RestController
@@ -25,7 +39,11 @@ public class SummaController {
 	private Double stockCp = 0.00;
 
 	Set<Stock> FTSE100;
-
+	
+	public void Refresh() {
+		FTSE100.clear();
+	}
+	
 	public SummaController() {
 		FTSE100 = new HashSet<Stock>();
 	}
@@ -43,7 +61,9 @@ public class SummaController {
 	final String url6 = "https://www.londonstockexchange.com/indices/ftse-100/constituents/table?page=6";
 	
 	@GetMapping("/fetch")
+	
 	public Set<Stock> FetchIseq(Stock stock) {
+		Refresh();
 
 		try {
 			final Document result = Jsoup.connect(url).get();
@@ -249,5 +269,47 @@ public class SummaController {
 		System.out.println("total of stocks: " + FTSE100.size());
 		return FTSE100;
 	}
+	
+//	@Autowired
+//	private UserService service;
+//
+//	@GetMapping("test2")
+//	public String test2() {
+//		return "that is ok";
+//	}
+//	
+//	@PostMapping("/addUser")
+//	public User addUser(@RequestBody User user) {
+//		return service.saveUser(user);
+//	}
+////	add user
+//	@PostMapping("/users")
+//	public List<User> addUser(@RequestBody List<User>user){
+//		return service.saveUser(user);
+//	}
+//	
+////	search id
+//	@PostMapping("/userById/{id}")
+//	public User findUserById(@PathVariable Long id) {
+//		return service.getUserById(id);
+//	}
+//	
+////	search name
+//	@PostMapping("/userByName/{name}")
+//	public User findUserByName(@PathVariable String name) {
+//		return service.getUserByName(name);
+//	}
+//	
+////	update
+//	@PutMapping("/userUpdate")
+//	public User updateUser(@RequestBody User user) {
+//		return service.updateUser(user);
+//	}
+//	
+////	delete
+//	@DeleteMapping("/delete/{id}")
+//	public String deleteUser(@PathVariable Long id) {
+//		return service.deleteUser(id);
+//	}
 
 }

@@ -11,3 +11,68 @@ menuToggle.addEventListener('click', () => {
 const changePhoto = document.querySelector('.bg-parlex');
 const oldPhoto = document.querySelector('.bg-parlex-new');
 
+
+
+
+
+
+
+
+/*over quote
+function noiseOut()
+{
+    document.getElementById('quoteNoise').setAttribute('../..;
+}
+function noiseIn()
+{
+    document.getElementById('quoteNoise').src = "../..;
+}*/
+
+            
+
+function createNode(element) {
+    return document.createElement(element);
+}
+
+function append(parent, el) {
+  return parent.appendChild(el);
+}
+
+// function fetchStocks() {
+//     const ul = document.getElementById('stocks');
+//     const url = 'https://localhost:8080/fetch';
+//     fetch(url)
+//     .then((resp) => resp.json())
+//     .then(function(data) {
+//     let stocks = data.results;
+//     return stocks.map(function(stock) {
+//         let li = createNode('li'),
+//             div = createNode('div'),
+//             h1 = createNode('h1'),
+//             h6 = createNode('h6'),
+//             h3 = createNode('h3'),;
+//         h1.innerHTML = `${stock.code}`;
+//         h6.innerHTML = `${stock.name}`;
+//         h3.innerHTML = `${stock.price}`;
+//         append(li, div);
+//         append(div, h1);
+//         append(div, h6);
+//         append(div, h3);
+//         append(ul, li);
+//     })
+//     })
+//     .catch(function(error) {
+//     console.log(error);
+//     });   
+// };
+
+function fetchStocks() {
+    const ul = document.getElementById('stocks');
+    const url = 'http://localhost:8080/fetch';
+    fetch(url)
+    .then((resp) => resp.json())
+    .then(function(data) {
+        let stocks = data.results;
+        console.log(stocks);
+    })
+}

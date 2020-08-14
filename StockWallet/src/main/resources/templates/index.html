@@ -2,9 +2,9 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
   <!-- ****** faviconit.com favicons ****** -->
-  <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
   <link rel="manifest" href="./favicon_io/site.webmanifest">
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -16,9 +16,9 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <title>Summa+ - stock wallet</title>
+  <title>Summa+ - stock wallt</title>
 </head>
-<body>
+
 <body>
   <header>
     <div class="logo"><a href=""></a></div>
@@ -40,7 +40,8 @@
       </i></div>
   </header>
   <!-- Sing-up -->
-  <form id="registration">
+  <form id="registration" action="/" method="POST">
+
     <div class="modal fade" id="modalRegister" tabindex="-1">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -50,49 +51,48 @@
             <button class="close" data-dismiss="modal">&times;</button>
             <h2 class="fontLogin">Register</h2>
             <p>Please fill in this form to create an account.</p>
+            <div id="signUpError" class="text-warning" ></div>
+
           </div>
 
 
           <div class="div modal-body">
+
             <div class="md-form form-sm mb-5">
               <i class="fas fa-user prefix grey-text"></i>
-              <input id="name" class="form-control form-control-sm validate" type="text" placeholder="Type your name.">
-              <label data-error="wrong" data-success="right" for="form34"></label>
+              <input id="createUserName" name="name" class="form-control form-control-sm validate" type="text" placeholder="Type your name." >
             </div>
             <div class="md-form form-sm mb-5">
               <i class="fas fa-envelope prefix"></i>
-              <input id="email" class="form-control form-control-sm validate" type="email"
+              <input id="createUserEmail" name="email" class="form-control form-control-sm validate" type="email" required 
                 placeholder="Type your e-mail address.">
-              <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
             </div>
             <div class="md-form form-sm mb-5">
               <i class="fas fa-lock prefix"></i>
-              <input id="password" class="form-control form-control-sm validate" type="password"
+              <input id="createUserPassword" class="form-control form-control-sm validate" type="password"
                 placeholder="Type your password.">
-              <label data-error="wrong" data-success="right" for="modalLRInput13"></label>
             </div>
             <div class="md-form form-sm mb-4">
               <i class="fas fa-lock prefix"></i>
-              <input id="repeatPassword" class="form-control form-control-sm validate" type="password"
+              <input id="createUserRepeatPassword" class="form-control form-control-sm validate" type="password"
                 placeholder="Repeat your password.">
-              <label data-error="wrong" data-success="right" for="modalLRInput14"></label>
             </div>
             <div class="form-group mt-4">
-              <input id="checkbox624" class="form-check-input" type="checkbox">
+              <input id="createUserCheckbox624" class="form-check-input" type="checkbox" required>
               <label for="checkbox624" class="white-text form-check-label">Accept the<a href="#"
                   class="green-text font-weight-bold">
                   Terms and Conditions</a></label>
+
             </div>
 
 
             <div class="modal-footer">
               <div class="text-center form-sm mt-2">
-                <button class="btn btn-default btn-md">Sign up <i class="fa fa-paper-plane prefix"></i></button>
+                <button type="submit" class="btn btn-default btn-md">Sign up <i class="fa fa-paper-plane prefix"></i></button>
                 <p class="pt-1">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal"
                     data-target="#modalLogin">Log In</a></p>
               </div>
             </div>
-
           </div>
 
         </div>
@@ -108,16 +108,16 @@
           <button class="close" data-dismiss="modal">&times;</button>
           <h2 class="fontLogin">Login</h2>
         </div>
-        <div class="div modal-body">
+        <form class="div modal-body">
           <div class="md-form form-sm mb-5">
             <i class="fas fa-envelope prefix"></i>
-            <input id="modalLRInput12" class="form-control form-control-sm validate" type="email"
+            <input id="modalLRInput12" class="form-control form-control-sm validate" type="email" required
               placeholder="E-mail address.">
             <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
           </div>
           <div class="md-form form-sm mb-5">
             <i class="fas fa-lock prefix"></i>
-            <input id="modalLRInput13" class="form-control form-control-sm validate" type="password"
+            <input id="modalLRInput13" class="form-control form-control-sm validate" type="password" required
               placeholder="Password.">
             <label data-error="wrong" data-success="right" for="modalLRInput13"></label>
           </div>
@@ -125,12 +125,12 @@
 
           <div class="modal-footer">
             <div class="text-center form-sm mt-2">
-              <button class="btn btn-default btn-md" data-target="http://localhost:8080/addUser">Sign up <i class="fa fa-paper-plane prefix"></i></button>
+              <button type = "submit" class="btn btn-default btn-md" data-target="http://localhost:8080/addUser">Sign up <i class="fa fa-paper-plane prefix"></i></button>
               <p class="pt-1">Not a member? <a href="#" data-dismiss="modal" data-toggle="modal"
-                  data-target="#modalRegister">Sing up</a></p>
+                  data-target="#modalRegister">Sign up</a></p>
             </div>
           </div>
-        </div>
+        </form>
 
       </div>
     </div>
@@ -141,7 +141,7 @@
   <div class="col-lg-6 col-md-3 col-sm-6 colxs-12" id="home">
     <div class="mainFrontHome">
       <h1>Welcome</h1>
-      <h2>we simplifying the outlook for you have a solid future.</h2>
+      <h2>Simplifying the outlook for you to have a solid future.</h2>
       <a href="#" class="btn btn-default btn-md" data-toggle="modal" data-target="#modalRegister">Get Started</a>
     </div>
   </div>
@@ -154,10 +154,10 @@
         </div>
         <div class="col-sm-6 text-center">
           <h2 class="justT">All about us</h2>
-          <p class="just">In 2020, summa was born with a purpose: to simplify people's access to the investment world.
-            We work hard and to make the experience of our users simpler and more intuitive. our focus is to help you
-            achieve success and financial independence by investing sustainably</p>
-          <p class="just">Only you can decide where you invest your money, you don't need to be a professional to
+          <p class="just">In 2020, Summa was born with a purpose: to simplify people's access to the investment world.
+            We worked hard to make the experience of our users simpler and more intuitive. Our focus is to help you
+            achieve success and financial independence by investing sensibly</p>
+          <p class="just">Only you can decide where to invest your money, you don't need to be a professional to
             understand how your investment evolves, we take care to simplify this analysis so that you see what your
             goal is for the future. We believe that investing is for everyone and, mainly, that it can be done without
             complexity, without "savings" and intermediaries selling products to you. Therefore, we offer quality and
@@ -178,8 +178,27 @@
       </div>
     </div>
   </div>
-  <div id="fixed"></div>
+  <div id="fixed">
+  	 <div class="container-fluid cardsContainer text-center">
+      <button onclick="fetchStocks()"></button>
+      <ul class="stocks">
+        <li>
+          <div class="card text-center">            
+              <h1 class="card-title">CLD</h1>
+              <p class="card-subtitle mb-2 text-muted">Namen nome abuihd eo 7</p>              
+              <p class="card-subtitle mb-2 text-muted">Price</p>
+              <p class="card-text"><i class="fas fa-dollar-sign"></i>8489</p>
+              <p class="card-subtitle mb-2 text-muted">Market Cap</p>
+              <p class="card-text"><i class="fas fa-arrow-up"></i> 74849.09</p>
+              <p class="card-subtitle mb-2 text-muted">Price Change</p>
+              <p class="card-text"><i class="fas fa-arrow-up"></i> 9.03</p>
+          </div>
+        </li> 
+      </ul>
+    </div>   -->
+  </div>
 
+ 
   <footer>
     <div class="container">
 
@@ -205,4 +224,5 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
 </body>
+
 </html>

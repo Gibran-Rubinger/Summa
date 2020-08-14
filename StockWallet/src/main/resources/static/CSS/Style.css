@@ -8,7 +8,7 @@ html, body{
     overflow: -moz-hidden-unscrollable;
 }
 
-/* creating a style for brand*/
+/* creating a style for logo*/
 header .logo
 {
     float: left;
@@ -38,7 +38,7 @@ header nav ul li a
     text-decoration: none;
     display: block;
 }
-/*menu colour status*/
+/*menu color status*/
 header nav ul li a:hover,
 header nav ul li a.active
 {
@@ -54,7 +54,7 @@ header nav ul li a.active
     margin: 6px 0;
     transition: 0.4s;
 }
-/* creating the movement for menu bars*/
+/* creating the moviment for menu bars*/
 .change .bar1 
 {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px);
@@ -119,12 +119,12 @@ header
         transition: 0.5s;
         opacity: 0.9;
     }
-    /*that class leave the menu toggle hide*/
+    /*that class leave the menu togle hide*/
     header nav.active
     {
         left: 0;
     }
-    /*here I put the text in the centre and hide the menu*/
+    /*here I put the text in the center and hide the menu*/
     header nav ul
     {
         display: block;
@@ -152,12 +152,12 @@ header
 }
 .fontLogin{
     font-family: "Montserrat", sans-serif;
-    display: bottom;
+    display: center;
     font-weight: 600;
 }
 
 .mainFrontHome {
-	font: lulo-clean-w01-one-bold,sans-serif;
+
 	display: table-cell;
 	text-align: center;
     vertical-align: middle;
@@ -177,7 +177,7 @@ header
 }
 
 .logo{
-    background-image: url(../images/summaNav.png);
+    background-image: url(../Images/summaNav.png);
     width: 140px;
     height: 70px;
     align-self: bottom;
@@ -189,7 +189,7 @@ header
 	z-index: -1;
 }
 .logo2{
-    background-image: url(../images/SUMMABLACK-1.png);
+    background-image: url(../Images/SUMMABLACK-1.png);
     width: 840px;
     height: 350px;
     scale: 20%;
@@ -269,4 +269,39 @@ footer {
     font-size: 10px;
     float: center;
     font-weight: bold;
+}
+
+/*modal fix bug
+.modal-open {
+    padding-right: 0 !important;
+  }
+  
+  html {
+    overflow-y: scroll !important;
+  }
+*/
+
+
+.cardsContainer {
+	background-color: rgba(255, 255, 255, 0.6);
+	padding: 1%;
+	margin: 5%;
+	width: 85%;
+	height: 80vh;
+}
+  
+.card {
+	background-color: #fff;
+    border-style: solid;
+    border-width: 1px;
+    padding: 1%;
+    width: 18rem;
+}
+
+.card > * {
+		font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+
+.stocks {
+	list-style-type: none;
 }
