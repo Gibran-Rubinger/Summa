@@ -24,12 +24,12 @@
     <div class="logo"><a href=""></a></div>
     <nav>
       <ul>
-        <li><a href="" class="active">HOME</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#stockdisplay">STOCKS</a></li>
-        <li><a href="file:///D:/sockWallet/frontEnd/index.html" data-toggle="modal" data-target="#modalLogin">LOGIN</a>
+        <li><a href="" class="active" onclick="closeMenu()">HOME</a></li>
+        <li><a href="#about" onclick="closeMenu()">ABOUT</a></li>
+        <li><a href="#stockdisplay" onclick="closeMenu()">STOCKS</a></li>
+        <li><a href="file:///D:/sockWallet/frontEnd/index.html" data-toggle="modal" data-target="#modalLogin" onclick="closeMenu()">LOGIN</a>
         </li>
-        <li><a href="http://localhost:8080/fetch">API</a></li>
+        <li><a href="http://localhost:8080/fetch" onclick="closeMenu()">API</a></li>
       </ul>
     </nav>
     <div class="menu-toggle"><i class="bar1, bar2, bar3" aria-hidden="true">
@@ -182,22 +182,23 @@
   <div id="fixed">
   <a id="stockdisplay"></a>
   	 <div class="container-fluid cardsContainer text-center">
-      <button onclick="fetchStocks()"></button>
-      <ul class="stocks">
+      <button id="getStocksButton" onclick="getStocks()">GET STOCKS</button>
+      <ul id="stocksList">
         <li>
           <div class="card text-center">            
-              <h1 class="card-title">CLD</h1>
-              <p class="card-subtitle mb-2 text-muted">Namen nome abuihd eo 7</p>              
+              <h1 class="card-title">EXP</h1>
+              <p class="card-subtitle mb-2 text-muted">Example Name</p>              
               <p class="card-subtitle mb-2 text-muted">Price</p>
-              <p class="card-text"><i class="fas fa-dollar-sign"></i>8489</p>
+              <p class="card-text"><i class="fas fa-dollar-sign"></i>0000</p>
               <p class="card-subtitle mb-2 text-muted">Market Cap</p>
-              <p class="card-text"><i class="fas fa-arrow-up"></i> 74849.09</p>
+              <p class="card-text"><i class="fas fa-arrow-up"></i> 00000.00</p>
               <p class="card-subtitle mb-2 text-muted">Price Change</p>
-              <p class="card-text"><i class="fas fa-arrow-up"></i> 9.03</p>
+              <p class="card-text"><i class="fas fa-arrow-up"></i> 0.00</p>
           </div>
         </li> 
       </ul>
-    </div>   -->
+       <a href="#stockdisplay"><i class="fas fa-arrow-up"></i></a>
+    </div> 
   </div>
 
  

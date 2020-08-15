@@ -287,7 +287,6 @@ footer {
 	padding: 1%;
 	margin: 5%;
 	width: 85%;
-	height: 80vh;
 }
   
 .card {
@@ -296,12 +295,16 @@ footer {
     border-width: 1px;
     padding: 1%;
     width: 18rem;
+    margin: 1%;
 }
 
 .card > * {
 		font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
 
-.stocks {
+#stocksList {
 	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }

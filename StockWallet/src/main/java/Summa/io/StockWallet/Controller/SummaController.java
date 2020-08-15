@@ -42,11 +42,11 @@ public class SummaController {
 	private int request = 0;
 
 	Set<Stock> FTSE100;
-	
+
 	public void Refresh() {
 		FTSE100.clear();
 	}
-	
+
 	public SummaController() {
 		FTSE100 = new HashSet<Stock>();
 	}
@@ -62,9 +62,9 @@ public class SummaController {
 	final String url4 = "https://www.londonstockexchange.com/indices/ftse-100/constituents/table?page=4";
 	final String url5 = "https://www.londonstockexchange.com/indices/ftse-100/constituents/table?page=5";
 	final String url6 = "https://www.londonstockexchange.com/indices/ftse-100/constituents/table?page=6";
-	
-	@GetMapping("/fetch")	
-	public Set<Stock> FetchLondon1 () {
+
+	@GetMapping("/fetch")
+	public Set<Stock> FetchLondon1() {
 		Refresh();
 		request++;
 
@@ -78,7 +78,7 @@ public class SummaController {
 //			System.out.println(result.outerHtml());
 
 			for (Element row : result.select("table.full-width.ftse-index-table-table tr")) {
-				
+
 				String transitionMark = "";
 				String textMark = "";
 				String textPrice = "";
@@ -111,7 +111,7 @@ public class SummaController {
 				}
 				FTSE100.add(new Stock(stockCd, stockNm, stockMk, stockPr, stockCp));
 			}
-			
+
 			for (Element row : result2.select("table.full-width.ftse-index-table-table tr")) {
 
 				String transitionMark = "";
@@ -143,10 +143,10 @@ public class SummaController {
 						String percent = textChPer.replace("%", "");
 						stockCp = Double.parseDouble(percent);
 					}
-				} 
+				}
 				FTSE100.add(new Stock(stockCd, stockNm, stockMk, stockPr, stockCp));
 			}
-			
+
 			for (Element row : result3.select("table.full-width.ftse-index-table-table tr")) {
 
 				String transitionMark = "";
@@ -159,7 +159,7 @@ public class SummaController {
 				if (row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link").text()
 						.equals("")) {
 					continue;
-				} else  {
+				} else {
 					stockCd = row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link")
 							.text();
 					stockNm = row.select("td.clickable.instrument-name.gtm-trackable.td-with-link").text();
@@ -181,7 +181,7 @@ public class SummaController {
 				}
 				FTSE100.add(new Stock(stockCd, stockNm, stockMk, stockPr, stockCp));
 			}
-			
+
 			for (Element row : result4.select("table.full-width.ftse-index-table-table tr")) {
 
 				String transitionMark = "";
@@ -194,7 +194,7 @@ public class SummaController {
 				if (row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link").text()
 						.equals("")) {
 					continue;
-				} else  {
+				} else {
 					stockCd = row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link")
 							.text();
 					stockNm = row.select("td.clickable.instrument-name.gtm-trackable.td-with-link").text();
@@ -216,7 +216,7 @@ public class SummaController {
 				}
 				FTSE100.add(new Stock(stockCd, stockNm, stockMk, stockPr, stockCp));
 			}
-			
+
 			for (Element row : result5.select("table.full-width.ftse-index-table-table tr")) {
 
 				String transitionMark = "";
@@ -251,7 +251,7 @@ public class SummaController {
 				}
 				FTSE100.add(new Stock(stockCd, stockNm, stockMk, stockPr, stockCp));
 			}
-			
+
 			for (Element row : result6.select("table.full-width.ftse-index-table-table tr")) {
 
 				String transitionMark = "";
@@ -264,7 +264,7 @@ public class SummaController {
 				if (row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link").text()
 						.equals("")) {
 					continue;
-				} else  {
+				} else {
 					stockCd = row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link")
 							.text();
 					stockNm = row.select("td.clickable.instrument-name.gtm-trackable.td-with-link").text();
@@ -294,11 +294,10 @@ public class SummaController {
 			System.out.println(st);
 		}
 		System.out.println("Total of stocks: " + FTSE100.size());
-		System.out.println("\nTotal Request: \n"+request);
+		System.out.println("\nTotal Request: \n" + request);
 		return FTSE100;
 	}
 
-	
 //	@Autowired
 //	private UserService service;
 //

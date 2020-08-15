@@ -7,44 +7,58 @@ menuToggle.addEventListener('click', () => {
     nav.classList.toggle('active')
     bars.classList.toggle('change')
 });
+
+function closeMenu() {
+	nav.classList.toggle('active');
+};
+
 /*script to change the home photo*/
 const changePhoto = document.querySelector('.bg-parlex');
 const oldPhoto = document.querySelector('.bg-parlex-new');
 
-            
+           
+const headers = new Headers();
 
-// function createNode(element) {
-//     return document.createElement(element);
-// }
+const init = { method: 'GET', headers: headers, mode: 'cors', cache: 'default' };
 
-// function append(parent, el) {
-//   return parent.appendChild(el);
-// }
+const url = `http://localhost:8080/fetch`;
 
+async function getStocks() {
+    try {
+        const response = await fetch(url);
 
+        const json = await response.json();
 
-// function fetchStocks() {
-// fetch('http://localhost:8080/fetch').then((data) => {
-//   const response = data.json();
-//     return response.map(function(stock) {
-//         let li = createNode('li'),
-//             div = createNode('div'),
-//             h1 = createNode('h1'),
-//             h6 = createNode('h6'),
-//             h3 = createNode('h3'),;
-//         h1.innerHTML = `${stock.code}`;
-//         h6.innerHTML = `${stock.name}`;
-//         h3.innerHTML = `${stock.price}`;
-//         append(li, div);
-//         append(div, h1);
-//         append(div, h6);
-//         append(div, h3);
-//         append(ul, li);
-//     })
-// })
-// };
+        console.log(json);
 
-fetch('http://localhost:8080/fetch').then((data) => {
-  const response = data.json();
-  console.log(response);
-});
+        displayData(json); 
+        
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+// getStocks();
+
+console.log('Has getStocks() finished yet?');
+
+function displayData(data) {
+    const stocks = data;
+    const output = stocks.map(stock => {
+        return `<li>
+	        		<div class="card text-center">            
+		              <h1 class="card-title">${stock.code}</h1>
+		              <p class="card-subtitle mb-2 text-muted">${stock.name}</p>              
+		              <p class="card-subtitle mb-2 text-muted">Price</p>
+		              <p class="card-text"><i class="fas fa-dollar-sign"></i>${stock.price}</p>
+		              <p class="card-subtitle mb-2 text-muted">Market Cap</p>
+		              <p class="card-text"><i class="fas fa-arrow-up"></i> ${stock.marketCap}</p>
+		              <p class="card-subtitle mb-2 text-muted">Price Change</p>
+		              <p class="card-text"><i class="fas fa-arrow-up"></i> ${stock.priceChangePer}</p>
+			        </div>
+		        </li>`;
+    });
+
+    document.getElementById('stocksList').innerHTML = output.join('');
+}
+
