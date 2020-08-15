@@ -11,41 +11,22 @@ menuToggle.addEventListener('click', () => {
 const changePhoto = document.querySelector('.bg-parlex');
 const oldPhoto = document.querySelector('.bg-parlex-new');
 
-
-
-
-
-
-
-
-/*over quote
-function noiseOut()
-{
-    document.getElementById('quoteNoise').setAttribute('../..;
-}
-function noiseIn()
-{
-    document.getElementById('quoteNoise').src = "../..;
-}*/
-
             
 
-function createNode(element) {
-    return document.createElement(element);
-}
+// function createNode(element) {
+//     return document.createElement(element);
+// }
 
-function append(parent, el) {
-  return parent.appendChild(el);
-}
+// function append(parent, el) {
+//   return parent.appendChild(el);
+// }
+
+
 
 // function fetchStocks() {
-//     const ul = document.getElementById('stocks');
-//     const url = 'https://localhost:8080/fetch';
-//     fetch(url)
-//     .then((resp) => resp.json())
-//     .then(function(data) {
-//     let stocks = data.results;
-//     return stocks.map(function(stock) {
+// fetch('http://localhost:8080/fetch').then((data) => {
+//   const response = data.json();
+//     return response.map(function(stock) {
 //         let li = createNode('li'),
 //             div = createNode('div'),
 //             h1 = createNode('h1'),
@@ -60,19 +41,10 @@ function append(parent, el) {
 //         append(div, h3);
 //         append(ul, li);
 //     })
-//     })
-//     .catch(function(error) {
-//     console.log(error);
-//     });   
+// })
 // };
 
-function fetchStocks() {
-    const ul = document.getElementById('stocks');
-    const url = 'http://localhost:8080/fetch';
-    fetch(url)
-    .then((resp) => resp.json())
-    .then(function(data) {
-        let stocks = data.results;
-        console.log(stocks);
-    })
-}
+fetch('http://localhost:8080/fetch').then((data) => {
+  const response = data.json();
+  console.log(response);
+});

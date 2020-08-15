@@ -25,10 +25,11 @@
     <nav>
       <ul>
         <li><a href="" class="active">HOME</a></li>
-        <li><a href="">STOCKS</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#stockdisplay">STOCKS</a></li>
         <li><a href="file:///D:/sockWallet/frontEnd/index.html" data-toggle="modal" data-target="#modalLogin">LOGIN</a>
         </li>
-        <li><a href="">NEWS</a></li>
+        <li><a href="http://localhost:8080/fetch">API</a></li>
       </ul>
     </nav>
     <div class="menu-toggle"><i class="bar1, bar2, bar3" aria-hidden="true">
@@ -152,7 +153,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6 colxs-12">
           <div class="logo2"></div>
         </div>
-        <div class="col-sm-6 text-center">
+        <div class="col-sm-6 text-center"><a id="about"></a>
           <h2 class="justT">All about us</h2>
           <p class="just">In 2020, Summa was born with a purpose: to simplify people's access to the investment world.
             We worked hard to make the experience of our users simpler and more intuitive. Our focus is to help you
@@ -179,6 +180,7 @@
     </div>
   </div>
   <div id="fixed">
+  <a id="stockdisplay"></a>
   	 <div class="container-fluid cardsContainer text-center">
       <button onclick="fetchStocks()"></button>
       <ul class="stocks">

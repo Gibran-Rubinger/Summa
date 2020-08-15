@@ -3,6 +3,8 @@ package Summa.io.StockWallet.Controller;
 import java.util.HashSet;
 //import java.util.List;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -32,11 +34,12 @@ public class SummaController {
 
 	private String stockCd = "";
 	private String stockNm = "";
-	private String stockMk = "";
+	private Double stockMk = 0.00;
 
 	private Double stockPr = 0.00;
 
 	private Double stockCp = 0.00;
+	private int request = 0;
 
 	Set<Stock> FTSE100;
 	
@@ -60,10 +63,10 @@ public class SummaController {
 	final String url5 = "https://www.londonstockexchange.com/indices/ftse-100/constituents/table?page=5";
 	final String url6 = "https://www.londonstockexchange.com/indices/ftse-100/constituents/table?page=6";
 	
-	@GetMapping("/fetch")
-	
-	public Set<Stock> FetchIseq(Stock stock) {
+	@GetMapping("/fetch")	
+	public Set<Stock> FetchLondon1 () {
 		Refresh();
+		request++;
 
 		try {
 			final Document result = Jsoup.connect(url).get();
@@ -75,7 +78,9 @@ public class SummaController {
 //			System.out.println(result.outerHtml());
 
 			for (Element row : result.select("table.full-width.ftse-index-table-table tr")) {
-
+				
+				String transitionMark = "";
+				String textMark = "";
 				String textPrice = "";
 				String transitionPrice = "";
 				String textChPer = "";
@@ -88,7 +93,9 @@ public class SummaController {
 					stockCd = row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link")
 							.text();
 					stockNm = row.select("td.clickable.instrument-name.gtm-trackable.td-with-link").text();
-					stockMk = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
+					transitionMark = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
+					textMark = transitionMark.replace(",", "");
+					stockMk = Double.parseDouble(textMark);
 					transitionPrice = row.select("td.instrument-lastprice").text();
 					textPrice = transitionPrice.replace(",", "");
 					stockPr = Double.parseDouble(textPrice);
@@ -107,6 +114,8 @@ public class SummaController {
 			
 			for (Element row : result2.select("table.full-width.ftse-index-table-table tr")) {
 
+				String transitionMark = "";
+				String textMark = "";
 				String textPrice = "";
 				String transitionPrice = "";
 				String textChPer = "";
@@ -119,7 +128,9 @@ public class SummaController {
 					stockCd = row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link")
 							.text();
 					stockNm = row.select("td.clickable.instrument-name.gtm-trackable.td-with-link").text();
-					stockMk = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
+					transitionMark = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
+					textMark = transitionMark.replace(",", "");
+					stockMk = Double.parseDouble(textMark);
 					transitionPrice = row.select("td.instrument-lastprice").text();
 					textPrice = transitionPrice.replace(",", "");
 					stockPr = Double.parseDouble(textPrice);
@@ -132,12 +143,14 @@ public class SummaController {
 						String percent = textChPer.replace("%", "");
 						stockCp = Double.parseDouble(percent);
 					}
-				}
+				} 
 				FTSE100.add(new Stock(stockCd, stockNm, stockMk, stockPr, stockCp));
 			}
 			
 			for (Element row : result3.select("table.full-width.ftse-index-table-table tr")) {
 
+				String transitionMark = "";
+				String textMark = "";
 				String textPrice = "";
 				String transitionPrice = "";
 				String textChPer = "";
@@ -146,11 +159,13 @@ public class SummaController {
 				if (row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link").text()
 						.equals("")) {
 					continue;
-				} else {
+				} else  {
 					stockCd = row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link")
 							.text();
 					stockNm = row.select("td.clickable.instrument-name.gtm-trackable.td-with-link").text();
-					stockMk = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
+					transitionMark = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
+					textMark = transitionMark.replace(",", "");
+					stockMk = Double.parseDouble(textMark);
 					transitionPrice = row.select("td.instrument-lastprice").text();
 					textPrice = transitionPrice.replace(",", "");
 					stockPr = Double.parseDouble(textPrice);
@@ -169,6 +184,8 @@ public class SummaController {
 			
 			for (Element row : result4.select("table.full-width.ftse-index-table-table tr")) {
 
+				String transitionMark = "";
+				String textMark = "";
 				String textPrice = "";
 				String transitionPrice = "";
 				String textChPer = "";
@@ -177,11 +194,13 @@ public class SummaController {
 				if (row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link").text()
 						.equals("")) {
 					continue;
-				} else {
+				} else  {
 					stockCd = row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link")
 							.text();
 					stockNm = row.select("td.clickable.instrument-name.gtm-trackable.td-with-link").text();
-					stockMk = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
+					transitionMark = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
+					textMark = transitionMark.replace(",", "");
+					stockMk = Double.parseDouble(textMark);
 					transitionPrice = row.select("td.instrument-lastprice").text();
 					textPrice = transitionPrice.replace(",", "");
 					stockPr = Double.parseDouble(textPrice);
@@ -200,6 +219,8 @@ public class SummaController {
 			
 			for (Element row : result5.select("table.full-width.ftse-index-table-table tr")) {
 
+				String transitionMark = "";
+				String textMark = "";
 				String textPrice = "";
 				String transitionPrice = "";
 				String textChPer = "";
@@ -212,7 +233,9 @@ public class SummaController {
 					stockCd = row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link")
 							.text();
 					stockNm = row.select("td.clickable.instrument-name.gtm-trackable.td-with-link").text();
-					stockMk = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
+					transitionMark = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
+					textMark = transitionMark.replace(",", "");
+					stockMk = Double.parseDouble(textMark);
 					transitionPrice = row.select("td.instrument-lastprice").text();
 					textPrice = transitionPrice.replace(",", "");
 					stockPr = Double.parseDouble(textPrice);
@@ -231,6 +254,8 @@ public class SummaController {
 			
 			for (Element row : result6.select("table.full-width.ftse-index-table-table tr")) {
 
+				String transitionMark = "";
+				String textMark = "";
 				String textPrice = "";
 				String transitionPrice = "";
 				String textChPer = "";
@@ -239,11 +264,13 @@ public class SummaController {
 				if (row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link").text()
 						.equals("")) {
 					continue;
-				} else {
+				} else  {
 					stockCd = row.select("td.clickable.bold-font-weight.instrument-tidm.gtm-trackable.td-with-link")
 							.text();
 					stockNm = row.select("td.clickable.instrument-name.gtm-trackable.td-with-link").text();
-					stockMk = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
+					transitionMark = row.select("td.instrument-marketcapitalization.hide-on-landscape").text();
+					textMark = transitionMark.replace(",", "");
+					stockMk = Double.parseDouble(textMark);
 					transitionPrice = row.select("td.instrument-lastprice").text();
 					textPrice = transitionPrice.replace(",", "");
 					stockPr = Double.parseDouble(textPrice);
@@ -266,9 +293,11 @@ public class SummaController {
 		for (Stock st : FTSE100) {
 			System.out.println(st);
 		}
-		System.out.println("total of stocks: " + FTSE100.size());
+		System.out.println("Total of stocks: " + FTSE100.size());
+		System.out.println("\nTotal Request: \n"+request);
 		return FTSE100;
 	}
+
 	
 //	@Autowired
 //	private UserService service;

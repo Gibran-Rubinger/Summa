@@ -6,12 +6,12 @@ public class Stock {
 
 	private String code = "";
 	private String name = "";
-	private String marketCap = "";
+	private Double marketCap = 0.00;
 	private Double price = 0.00;
 	private Double priceChangePer = 0.00;
 	LocalDateTime dTime = LocalDateTime.now();
 
-	public Stock(String code, String name, String marketCap, Double price, Double priceChangePer) {
+	public Stock(String code, String name, Double marketCap, Double price, Double priceChangePer) {
 		this.code = code;
 		this.name = name;
 		this.marketCap = marketCap;
@@ -35,11 +35,11 @@ public class Stock {
 		this.name = name;
 	}
 
-	public String getMarketCap() {
+	public Double getMarketCap() {
 		return marketCap;
 	}
 
-	public void setMarketCap(String marketCap) {
+	public void setMarketCap(Double marketCap) {
 		this.marketCap = marketCap;
 	}
 
