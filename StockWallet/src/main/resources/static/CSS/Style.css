@@ -1,274 +1,259 @@
 @charset "UTF-8";
 
-html, body{
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: -moz-hidden-unscrollable;
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	overflow: -moz-hidden-unscrollable;
 }
 
 /* creating a style for logo*/
-header .logo
-{
-    float: left;
+header .logo {
+	float: left;
 }
 /* menu definitions*/
-header nav
-{
-    float: right;
-    bottom: 10px;
+header nav {
+	float: right;
+	bottom: 10px;
 }
-header nav ul
-{
-    margin: 0;
-    padding: 0;
-    display: flex;
+
+header nav ul {
+	margin: 0;
+	padding: 0;
+	display: flex;
 }
-header nav ul li
-{
-    list-style: none;
+
+header nav ul li {
+	list-style: none;
 }
-header nav ul li a
-{
-    height: 70px;
-    line-height: 70px;
-    padding: 0 20px;
-    color: #fff;
-    text-decoration: none;
-    display: block;
+
+header nav ul li a {
+	height: 70px;
+	line-height: 70px;
+	padding: 0 20px;
+	color: #fff;
+	text-decoration: none;
+	display: block;
 }
 /*menu color status*/
-header nav ul li a:hover,
-header nav ul li a.active
-{
-    color: #c0392b;
-    font-weight: bold;
+header nav ul li a:hover, header nav ul li a.active {
+	color: #c0392b;
+	font-weight: bold;
 }
 /* creating a style for menu bars*/
-.bar1, .bar2, .bar3
-{
-    width: 35px;
-    height: 5px;
-    background-color: #fff;
-    margin: 6px 0;
-    transition: 0.4s;
+.bar1, .bar2, .bar3 {
+	width: 35px;
+	height: 5px;
+	background-color: #fff;
+	margin: 6px 0;
+	transition: 0.4s;
 }
 /* creating the moviment for menu bars*/
-.change .bar1 
-{
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-    transform: rotate(-45deg) translate(-9px, 6px);
+.change .bar1 {
+	-webkit-transform: rotate(-45deg) translate(-9px, 6px);
+	transform: rotate(-45deg) translate(-9px, 6px);
 }
 
-.change .bar2 
-{
-    opacity: 0;
+.change .bar2 {
+	opacity: 0;
 }
 
-.change .bar3 
-{
-    -webkit-transform: rotate(45deg) translate(-8px, -8px);
-    transform: rotate(45deg) translate(-8px, -8px);
+.change .bar3 {
+	-webkit-transform: rotate(45deg) translate(-8px, -8px);
+	transform: rotate(45deg) translate(-8px, -8px);
 }
 
-header
-{
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 0 10px;
-    background: #000000;
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 99;
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 0 10px;
+	background: #000000;
+	width: 100%;
+	box-sizing: border-box;
+	z-index: 99;
 }
 /*creating the menu toggle styles*/
-.menu-toggle
-{
-    color: #fff;
-    float: right;
-    line-height: 50px;
-    font-size: 24px;
-    cursor: pointer;
-    display: none;
+.menu-toggle {
+	color: #fff;
+	float: right;
+	line-height: 50px;
+	font-size: 24px;
+	cursor: pointer;
+	display: none;
 }
 /*responsive definitions to use menu-toggle*/
-@media (max-width: 991px)
-{
-    header
-    {
-        padding: 5 20px;
-    }
-    header .logo
-    {
-    float: left;
-    }
-    .menu-toggle
-    {
-        display: block;
-    }
-    header nav 
-    {
-        position: absolute;
-        width: 100%;
-        height: calc(100vh - 50px);
-        background: #333;
-        top: 50px;
-        left: 100%;
-        transition: 0.5s;
-        opacity: 0.9;
-    }
-    /*that class leave the menu togle hide*/
-    header nav.active
-    {
-        left: 0;
-    }
-    /*here I put the text in the center and hide the menu*/
-    header nav ul
-    {
-        display: block;
-        text-align: center;
-    }
-    /*creating some division after toggle*/
-    header nav ul li a 
-    {
-        border-bottom: 1px solid rgba(0, 0, 0, .2);
-    }
+@media ( max-width : 991px) {
+	header {
+		padding: 5 20px;
+	}
+	header .logo {
+		float: left;
+	}
+	.menu-toggle {
+		display: block;
+	}
+	header nav {
+		position: absolute;
+		width: 100%;
+		height: calc(100vh - 50px);
+		background: #333;
+		top: 50px;
+		left: 100%;
+		transition: 0.5s;
+		opacity: 0.9;
+	}
+	/*that class leave the menu togle hide*/
+	header nav.active {
+		left: 0;
+	}
+	/*here I put the text in the center and hide the menu*/
+	header nav ul {
+		display: block;
+		text-align: center;
+	}
+	/*creating some division after toggle*/
+	header nav ul li a {
+		border-bottom: 1px solid rgba(0, 0, 0, .2);
+	}
 }
 
 /*After menu*/
-
 #home {
 	background-image: url(../images/kelly-sikkema-FqqaJI9OxMI-unsplash.jpg);
-    background-attachment: fixed;
-    background-position: top center;
-    display: table;
- 	width: 100%;
+	background-attachment: fixed;
+	background-position: top center;
+	display: table;
+	width: 100%;
 	height: 100vh;
-    position: relative;
-    background-size: cover;
-    
+	position: relative;
+	background-size: cover;
 }
-.fontLogin{
-    font-family: "Montserrat", sans-serif;
-    display: center;
-    font-weight: 600;
+
+.fontLogin {
+	font-family: "Montserrat", sans-serif;
+	display: center;
+	font-weight: 600;
 }
 
 .mainFrontHome {
-
 	display: table-cell;
 	text-align: center;
-    vertical-align: middle;
-    color: #fff;
-    text-shadow: black;
+	vertical-align: middle;
+	color: #fff;
+	text-shadow: black;
 }
+
 .mainFrontHome h1 {
-    font-size: 500%;
-    font-weight: 700;
+	font-size: 500%;
+	font-weight: 700;
 }
 
-.padding{
-    padding: 25px;
+.padding {
+	padding: 25px;
 }
+
 .padding img {
-    width: 100%;
+	width: 100%;
 }
 
-.logo{
-    background-image: url(../Images/summaNav.png);
-    width: 140px;
-    height: 70px;
-    align-self: bottom;
-    background-position: left;
-    background-repeat: no-repeat;
-    -webkit-transform: translateZ(0);
-          transform: translateZ(0);
+.logo {
+	background-image: url(../Images/summaNav.png);
+	width: 140px;
+	height: 70px;
+	align-self: bottom;
+	background-position: left;
+	background-repeat: no-repeat;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 	will-change: transform;
 	z-index: -1;
 }
-.logo2{
-    background-image: url(../Images/SUMMABLACK-1.png);
-    width: 840px;
-    height: 350px;
-    scale: 20%;
-    background-repeat: no-repeat;
-    background-position: left center;
-    -webkit-transform: translateZ(0);
-          transform: translateZ(0);
+
+.logo2 {
+	background-image: url(../Images/SUMMABLACK-1.png);
+	width: 840px;
+	height: 350px;
+	scale: 20%;
+	background-repeat: no-repeat;
+	background-position: left center;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 	will-change: transform;
 	z-index: -1;
-    
 }
+
 .fixed-wrap {
 	clip: rect(0, auto, auto, 0);
 	position: absolute;
 	width: 100%;
 	height: 100%;
 }
+
 #fixed {
-    background-image: url(../images/john-baker-3To9V42K0Ag-unsplash.jpg);
-    background-attachment: fixed;
+	background-image: url(../images/john-baker-3To9V42K0Ag-unsplash.jpg);
+	background-attachment: fixed;
 	position: fixed;
 	display: table;
 	width: 100%;
-    height: 100vh;
-    position: relative;
+	height: 100vh;
+	position: relative;
 	background-size: cover;
 	background-position: center center;
 }
-.justT{
-    font-size: 27px;
-    text-align: left;
+
+.justT {
+	font-size: 27px;
+	text-align: left;
 }
-.just{
-    font-size: 17px;
-    text-align: justify;
+
+.just {
+	font-size: 17px;
+	text-align: justify;
 }
 
 .modal-open {
-    padding-right: 0 !important;
-  }
-  html {
-    overflow-y: scroll !important;
-  }
-/*Register/login validation */
+	padding-right: 0 !important;
+}
 
+html {
+	overflow-y: scroll !important;
+}
+/*Register/login validation */
 
 /*Footer*/
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 5px;
-    background: rgb(0, 0, 0);
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	padding: 5px;
+	background: rgb(0, 0, 0);
 }
 
 .social a:hover {
-    color: #c0392b;
+	color: #c0392b;
 }
 
 .social a {
-    font-size: 25px;
-    margin: 0 10px;
-    color: #c7c7c7;
+	font-size: 25px;
+	margin: 0 10px;
+	color: #c7c7c7;
 }
 
 .contact ul li {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .contact ul li i {
-    margin-right: 15px;
+	margin-right: 15px;
 }
 
-.clear
-{
-    color: rgb(214, 210, 210);
-    font-size: 10px;
-    float: center;
-    font-weight: bold;
+.clear {
+	color: rgb(214, 210, 210);
+	font-size: 10px;
+	float: center;
+	font-weight: bold;
 }
 
 /*modal fix bug
@@ -280,31 +265,137 @@ footer {
     overflow-y: scroll !important;
   }
 */
-
-
 .cardsContainer {
-	background-color: rgba(255, 255, 255, 0.6);
-	padding: 1%;
+	background-color: rgba(204, 204, 204, 0.6);
+	padding: 1.5rem;
+	box-shadow: 0 0.75rem 6rem rgba(56, 65, 74, .03);
+	border-radius: 4px;
 	margin: 5%;
-	width: 85%;
-}
-  
-.card {
-	background-color: #fff;
-    border-style: solid;
-    border-width: 1px;
-    padding: 1%;
-    width: 18rem;
-    margin: 1%;
+	width: 90%;
 }
 
-.card > * {
-		font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+.card {
+	position: relative;
+	background: linear-gradient(0deg, #1b1b1b, #222, #1b1b1b);
+	height: 365px;
+	width: 200px;
+	border-radius: 6px;
+	transition: 0.2s;
+    padding: 10px;
+}
+
+.card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 15px 55px rgba(0, 0, 0, .5);
+}
+
+.card:before {
+	content: '';
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 350px;
+	width: 200px;
+	background: rgba(255, 255, 255, .03);
+	pointer-events: none;
+	z-index: 1;
+}
+
+.stockcode {
+	z-index: 99;
+	font-family: "Poppins", sans-serif;
+	font-size: 50px;
+	font-weight: 950;
+	color: rgba(255, 255, 255, 0.7);
+	position: left;
+	bottom: 0;
+	right: 130px;
+}
+
+.card:hover .stockcode {
+	color: rgba(255, 255, 255, 3.3);
+	text-shadow: 0 0 10px #FFFFFF, 3px 2px 5px rgba(53, 23, 14, 0.32), 3px
+		2px 5px rgba(15, 6, 4, 0.32);
+	transition: color 3.5s ease-out, text-shadow 0.5s ease-out;
+}
+
+.cname {
+    visibility: hidden;
+	font-family: "Poppins", sans-serif;
+	position: center;
+	font-size: 12px;
+	font-weight: 100;
+	max-width: 100%;
+	width: 200px;
+}
+
+.card:hover .cname {
+	visibility: visible;
+	transition: 5.9s ease-out;
+	word-wrap: break-word;
+    color: white;
+    text-align: center;
+    font-weight: 700;
 }
 
 #stocksList {
 	list-style-type: none;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+    justify-content: space-between;
+    padding-inline: 10px;
+}
+
+
+.price{
+	padding: 0px 5px 0px 5px;
+	color: white;
+    font-weight: 700;
+}
+
+.price #pounds{
+	color: rgba(255, 215, 0, 1.0);
+}
+
+.baseprice{
+	color: white;
+    font-weight: 700;
+    width: 100%;
+    margin-top: 10%;
+}
+.org-itens{
+    display: inline-block;
+    font-family: "Poppins", sans-serif;
+	font-size: 20px;
+	font-weight: 650;
+	color: rgba(255, 255, 255, 0.7);
+	position: relative;
+}
+
+.org-itens #chart {
+	color: rgba(30, 144, 255, 1.0) !important;
+}
+
+.card  #arrowup {
+	color: rgba(51, 255, 153, 1.0);
+}
+.card:hover  #arrowup {
+	color: rgba(51, 255, 153, 1.0);
+	text-shadow: 0 0 10px #FFFFFF, 3px 2px 5px rgba(51, 255, 153, 0.32), 3px
+		2px 5px rgba(15, 6, 4, 0.32);
+	transition: color 0.5s ease-out, text-shadow 0.5s ease-out;
+}
+
+.card  #arrowdo {
+	color: rgba(233, 13, 13, 1.0);
+}
+.card:hover  #arrowdo {
+	color: rgba(233, 13, 13, 1.0);
+	text-shadow: 0 0 10px #FFFFFF, 3px 2px 5px rgba(233, 13, 13, 1.0), 3px
+		2px 5px rgba(15, 6, 4, 0.32);
+	transition: color 0.5s ease-out, text-shadow 0.5s ease-out;
+}
+
+#stocksList li {
+    margin: 3%;
 }

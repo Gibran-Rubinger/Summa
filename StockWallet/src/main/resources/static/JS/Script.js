@@ -43,20 +43,54 @@ async function getStocks() {
 console.log('Has getStocks() finished yet?');
 
 function displayData(data) {
-    const stocks = data;
-    const output = stocks.map(stock => {
-        return `<li>
-	        		<div class="card text-center">            
-		              <h1 class="card-title">${stock.code}</h1>
-		              <p class="card-subtitle mb-2 text-muted">${stock.name}</p>              
-		              <p class="card-subtitle mb-2 text-muted">Price</p>
-		              <p class="card-text"><i class="fas fa-dollar-sign"></i>${stock.price}</p>
-		              <p class="card-subtitle mb-2 text-muted">Market Cap</p>
-		              <p class="card-text"><i class="fas fa-arrow-up"></i> ${stock.marketCap}</p>
-		              <p class="card-subtitle mb-2 text-muted">Price Change</p>
-		              <p class="card-text"><i class="fas fa-arrow-up"></i> ${stock.priceChangePer}</p>
-			        </div>
-		        </li>`;
+  const stocks = data;
+  const output = stocks.map(stock => {
+    var variation = "";
+    if(stock.priceChangePer >0.00){
+      variation= `<i class="fas fa-arrow-up" id="arrowup"></i>`;
+    }else{
+      variation=`<i class="fas fa-arrow-down" id="arrowdo"></i>`;
+    }
+    return `<li>
+    <div class="card">   
+    <div class="stockcode">
+          		<h2 class="stockcode">${stock.code}</h2>
+          	 </div> 
+          	 
+          	         
+             <div class="cname">
+             	<h5>${stock.name}</h5>
+             </div>
+             
+             
+              <div class="price">
+              	<h2><i class="fas fa-pound-sign" id="pounds"></i>${stock.price}</h2>
+              	<p class="card-subtitle mb-2 text-muted">Price</p>
+              </div> 
+              
+              
+            <div class=baseprice>  
+              <div class="org-itens">
+                <i class="fas fa-chart-line" id="chart"></i>
+                ${stock.marketCap}
+              </div>
+              <div>
+                Market Cap
+              </div>
+           </div>
+           <div class="baseprice">
+           <div class="org-itens">
+              ${variation}
+              ${stock.priceChangePer}
+              <i class="fas fa-percentage"></i>
+           </div>
+              <div>
+                Price Change
+              </div>
+              
+            </div>   
+          </div>
+        </li>`; 
     });
 
     document.getElementById('stocksList').innerHTML = output.join('');
